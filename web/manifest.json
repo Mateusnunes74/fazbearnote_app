@@ -1,6 +1,6 @@
 {
-    "name": "fazbearnote_app",
-    "short_name": "fazbearnote_app",
+    "name": "fazbear_security_todo",
+    "short_name": "fazbear_security_todo",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

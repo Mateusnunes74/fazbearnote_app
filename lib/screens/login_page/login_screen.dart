@@ -1,33 +1,14 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key});
+class LoginScreen extends StatefulWidget {
+  LoginScreen({super.key});
 
   @override
   // ignore: library_private_types_in_public_api
-  _MyHomePageState createState() => _MyHomePageState();
+  _LoginScreenState createState() => _LoginScreenState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _LoginScreenState extends State<LoginScreen> {
   // Controllers for the TextFields
   final TextEditingController _controller1 = TextEditingController();
   final TextEditingController _controller2 = TextEditingController();
@@ -35,9 +16,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('FazBearNote'),
-      ),
+      backgroundColor: Theme.of(context).colorScheme.primary,
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -56,33 +35,32 @@ class _MyHomePageState extends State<MyHomePage> {
             const SizedBox(height: 14),
             TextField(
               controller: _controller1,
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'Digite seu email',
-              ),
+              decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Digite seu email',
+                  labelStyle: TextStyle(color: Theme.of(context).hintColor)),
+              keyboardType: TextInputType.text,
             ),
             const SizedBox(height: 14),
             // Second TextField
             TextField(
               controller: _controller2,
-              decoration: const InputDecoration(
-                border: OutlineInputBorder(),
-                labelText: 'Digite sua senha',
-              ),
+              decoration: InputDecoration(
+                  border: OutlineInputBorder(),
+                  labelText: 'Digite sua senha',
+                  labelStyle: TextStyle(color: Theme.of(context).hintColor)),
+              keyboardType: TextInputType.visiblePassword,
             ),
             const SizedBox(height: 20),
             // Button
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                 backgroundColor: const Color.fromARGB(255, 74, 6, 219),
+                backgroundColor: const Color.fromARGB(255, 74, 6, 219),
               ),
-              onPressed: () {
-              },
+              onPressed: () {},
               child: const Text(
                 'Iniciar',
-                style: TextStyle(
-                  color: Color.fromARGB(255, 255, 255, 255)
-                ),
+                style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
               ),
             ),
           ],
