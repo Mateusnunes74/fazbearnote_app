@@ -1,56 +1,64 @@
 import 'package:flutter/material.dart';
 
-class LoginScreen extends StatefulWidget {
-  LoginScreen({super.key});
+class RegisterScreen extends StatefulWidget {
+  const RegisterScreen({super.key});
 
   @override
-  // ignore: library_private_types_in_public_api
-  _LoginScreenState createState() => _LoginScreenState();
+  State<RegisterScreen> createState() => _RegisterScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
-  // Controllers for the TextFields
+class _RegisterScreenState extends State<RegisterScreen> {
   final TextEditingController _controller1 = TextEditingController();
   final TextEditingController _controller2 = TextEditingController();
+  final TextEditingController _controller3 = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.primary,
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.symmetric(vertical: 120, horizontal: 40),
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            // Central Image
             Center(
               child: Image.asset(
-                'assets/image.png',
+                'assets/freddy_register_screen.png',
                 width: 214,
                 height: 302,
                 fit: BoxFit.cover,
               ),
             ),
-            const SizedBox(height: 14),
+            const SizedBox(height: 20),
             TextField(
               controller: _controller1,
               decoration: InputDecoration(
                   filled: true,
                   fillColor: Colors.white,
-                  border: OutlineInputBorder(),
-                  labelText: 'Digite seu email',
+                  border: const OutlineInputBorder(),
+                  labelText: 'Digite seu nome',
                   labelStyle: TextStyle(color: Theme.of(context).hintColor)),
               keyboardType: TextInputType.text,
             ),
-            const SizedBox(height: 14),
+            const SizedBox(height: 10),
             // Second TextField
             TextField(
               controller: _controller2,
               decoration: InputDecoration(
                   filled: true,
                   fillColor: Colors.white,
-                  border: OutlineInputBorder(),
+                  border: const OutlineInputBorder(),
+                  labelText: 'Digite seu email',
+                  labelStyle: TextStyle(color: Theme.of(context).hintColor)),
+              keyboardType: TextInputType.text,
+            ),
+            const SizedBox(height: 10),
+            // Second TextField
+            TextField(
+              controller: _controller3,
+              decoration: InputDecoration(
+                  filled: true,
+                  fillColor: Colors.white,
+                  border: const OutlineInputBorder(),
                   labelText: 'Digite sua senha',
                   labelStyle: TextStyle(color: Theme.of(context).hintColor)),
               keyboardType: TextInputType.visiblePassword,
@@ -63,13 +71,13 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               onPressed: () {},
               child: const Text(
-                'Iniciar',
+                'Criar',
                 style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
               ),
             ),
           ],
         ),
-      ),
+        )
     );
   }
 }

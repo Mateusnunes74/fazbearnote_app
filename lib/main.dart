@@ -1,4 +1,5 @@
-import 'package:fazbear_security_todo/screens/home_page/login_screen.dart';
+import 'package:fazbear_security_todo/screens/login_page/login_screen.dart';
+import 'package:fazbear_security_todo/screens/register_page/register_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
