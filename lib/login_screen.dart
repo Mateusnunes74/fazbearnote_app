@@ -53,7 +53,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 fit: BoxFit.cover,
               ),
             ),
-            const SizedBox(height: 14),
+            const SizedBox(height: 20),
             TextField(
               controller: _controller1,
               decoration: const InputDecoration(
@@ -61,7 +61,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 labelText: 'Digite seu email',
               ),
             ),
-            const SizedBox(height: 14),
+            const SizedBox(height: 16),
             // Second TextField
             TextField(
               controller: _controller2,
