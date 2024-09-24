@@ -35,16 +35,13 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('FazBearNote'),
-      ),
+      backgroundColor: const Color(0xff001b3f),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            // Central Image
             Center(
               child: Image.asset(
                 'assets/image.png',
@@ -53,7 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 fit: BoxFit.cover,
               ),
             ),
-            const SizedBox(height: 20),
+            const SizedBox(width: 14),
             TextField(
               controller: _controller1,
               decoration: const InputDecoration(
@@ -61,8 +58,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 labelText: 'Digite seu email',
               ),
             ),
-            const SizedBox(height: 16),
-            // Second TextField
+            const SizedBox(width: 14),
             TextField(
               controller: _controller2,
               decoration: const InputDecoration(
@@ -74,14 +70,13 @@ class _MyHomePageState extends State<MyHomePage> {
             // Button
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                 backgroundColor: const Color.fromARGB(255, 74, 6, 219),
+                 backgroundColor:  const Color(0xff3c4279),
               ),
-              onPressed: () {
-              },
+              onPressed: () {},
               child: const Text(
                 'Iniciar',
                 style: TextStyle(
-                  color: Color.fromARGB(255, 255, 255, 255)
+                  color: Color(0xff000000)
                 ),
               ),
             ),
