@@ -1,10 +1,9 @@
-
-import 'package:fazbearnote_app/models/task_model.dart';
+import 'package:fazbear_security_todo/models/task_model.dart';
 import 'package:flutter/material.dart';
 
 
 class SaveTask extends ChangeNotifier {
-  List<Task> _tasks = [
+  final List<Task> _tasks = [
     Task(title: 'Aprender essa merda de Flutter', isCompleted: false),
     Task(title: 'Beber água', isCompleted: false),
     Task(title: 'Matar o criador do Flutter', isCompleted: false),
@@ -18,7 +17,7 @@ class SaveTask extends ChangeNotifier {
   }
 
    void removeTask(Task task){
-    tasks.add(task);
+    tasks.remove(task);
     notifyListeners();
   }
   

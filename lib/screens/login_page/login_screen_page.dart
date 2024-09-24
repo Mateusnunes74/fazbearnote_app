@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-class LoginScreen extends StatefulWidget {
-  LoginScreen({super.key});
+class LoginScreenPage extends StatefulWidget {
+  const LoginScreenPage({super.key});
 
   @override
   // ignore: library_private_types_in_public_api
   _LoginScreenState createState() => _LoginScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _LoginScreenState extends State<LoginScreenPage> {
   // Controllers for the TextFields
   final TextEditingController _controller1 = TextEditingController();
   final TextEditingController _controller2 = TextEditingController();
@@ -16,11 +16,7 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-<<<<<<< HEAD:lib/login_screen.dart
-      backgroundColor: const Color(0xff001b3f),
-=======
       backgroundColor: Theme.of(context).colorScheme.primary,
->>>>>>> 327cd1f4559e66f3eeb08e4e339ff10561705e29:lib/screens/login_page/login_screen.dart
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -41,7 +37,7 @@ class _LoginScreenState extends State<LoginScreen> {
               decoration: InputDecoration(
                   filled: true,
                   fillColor: Colors.white,
-                  border: OutlineInputBorder(),
+                  border: const OutlineInputBorder(),
                   labelText: 'Digite seu email',
                   labelStyle: TextStyle(color: Theme.of(context).hintColor)),
               keyboardType: TextInputType.text,
@@ -52,7 +48,7 @@ class _LoginScreenState extends State<LoginScreen> {
               decoration: InputDecoration(
                   filled: true,
                   fillColor: Colors.white,
-                  border: OutlineInputBorder(),
+                  border: const OutlineInputBorder(),
                   labelText: 'Digite sua senha',
                   labelStyle: TextStyle(color: Theme.of(context).hintColor)),
               keyboardType: TextInputType.visiblePassword,
@@ -61,22 +57,14 @@ class _LoginScreenState extends State<LoginScreen> {
             // Button
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-<<<<<<< HEAD:lib/login_screen.dart
-                 backgroundColor:  const Color(0xff3c4279),
-=======
-                backgroundColor: const Color.fromARGB(255, 74, 6, 219),
->>>>>>> 327cd1f4559e66f3eeb08e4e339ff10561705e29:lib/screens/login_page/login_screen.dart
+                backgroundColor: const Color(0xffecc06c),
               ),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.pushReplacementNamed(context, '/list-screen');
+              },
               child: const Text(
                 'Iniciar',
-<<<<<<< HEAD:lib/login_screen.dart
-                style: TextStyle(
-                  color: Color(0xff000000)
-                ),
-=======
                 style: TextStyle(color: Color.fromARGB(255, 255, 255, 255)),
->>>>>>> 327cd1f4559e66f3eeb08e4e339ff10561705e29:lib/screens/login_page/login_screen.dart
               ),
             ),
           ],

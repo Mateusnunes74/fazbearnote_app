@@ -11,7 +11,7 @@ class DatabaseHelper {
   String taskTable = 'task_table';
   String colId = 'id';
   String colTitle = 'title';
-  String colData = 'data';
+  String colIsCompleted = 'isCompleted';
 
   DatabaseHelper._instance();
 
@@ -30,7 +30,8 @@ class DatabaseHelper {
 
   void _createDb(Database db, int version) async {
     await db.execute(
-        'CREATE TABLE $taskTable($colId INTEGER PRIMARY KEY AUTOINCREMENT, $colTitle TEXT, $colData TEXT)');
+      'CREATE TABLE $taskTable($colId INTEGER PRIMARY KEY AUTOINCREMENT, $colTitle TEXT, $colIsCompleted CHAR(1))'
+    );
   }
 
   Future<List<Map<String, dynamic>>> getTaskMapList() async {

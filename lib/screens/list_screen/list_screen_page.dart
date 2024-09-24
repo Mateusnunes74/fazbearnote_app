@@ -1,4 +1,4 @@
-import 'package:fazbearnote_app/models/save_task.dart';
+import 'package:fazbear_security_todo/models/save_task.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -17,7 +17,7 @@ class ListScreenPage extends StatelessWidget {
       
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.of(context).pushNamed('add-task-screen');
+          Navigator.pushReplacementNamed(context, '/add-task-screen');
         },
         child: const Icon(Icons.add),
       ),

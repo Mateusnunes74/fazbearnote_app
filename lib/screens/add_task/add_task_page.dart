@@ -1,7 +1,5 @@
-import 'package:fazbearnote_app/list_screen/list_screen_page.dart';
-import 'package:fazbearnote_app/main.dart';
-import 'package:fazbearnote_app/models/save_task.dart';
-import 'package:fazbearnote_app/models/task_model.dart';
+import 'package:fazbear_security_todo/models/save_task.dart';
+import 'package:fazbear_security_todo/models/task_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
