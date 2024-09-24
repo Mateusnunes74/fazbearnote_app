@@ -1,4 +1,3 @@
-
 class Task{
   final String title;
   bool isCompleted;

@@ -8,7 +8,7 @@ class Note {
   Note.withId({this.id, this.title, this.data});
 
   Map<String, dynamic> toMap() {
-    final map = Map<String, String>();
+    final map = Map<String, dynamic>();
 
     if (id != null) {
       map['id'] = id;

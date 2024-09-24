@@ -335,8 +335,8 @@ class MaterialTheme {
     return theme(darkHighContrastScheme());
   }
 
-
   ThemeData theme(ColorScheme colorScheme) => ThemeData(
+<<<<<<< HEAD
      useMaterial3: true,
      brightness: colorScheme.brightness,
      colorScheme: colorScheme,
@@ -347,6 +347,18 @@ class MaterialTheme {
      scaffoldBackgroundColor: colorScheme.surface,
      canvasColor: colorScheme.surface,
   );
+=======
+        useMaterial3: true,
+        brightness: colorScheme.brightness,
+        colorScheme: colorScheme,
+        textTheme: textTheme.apply(
+          bodyColor: colorScheme.onSurface,
+          displayColor: colorScheme.onSurface,
+        ),
+        scaffoldBackgroundColor: colorScheme.background,
+        canvasColor: colorScheme.surface,
+      );
+>>>>>>> 327cd1f4559e66f3eeb08e4e339ff10561705e29
 
   /// First Terciary Variant
   static const firstTerciaryVariant = ExtendedColor(
@@ -432,11 +444,10 @@ class MaterialTheme {
     ),
   );
 
-
   List<ExtendedColor> get extendedColors => [
-    firstTerciaryVariant,
-    secondTerciaryVariant,
-  ];
+        firstTerciaryVariant,
+        secondTerciaryVariant,
+      ];
 }
 
 class ExtendedColor {
