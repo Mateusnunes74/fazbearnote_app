@@ -10,13 +10,11 @@ class LoginScreenPage extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreenPage> {
   // Controllers for the TextFields
-  final TextEditingController _controller1 = TextEditingController();
-  final TextEditingController _controller2 = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.primary,
+      backgroundColor: Theme.of(context).colorScheme.onPrimaryContainer,
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -30,28 +28,6 @@ class _LoginScreenState extends State<LoginScreenPage> {
                 height: 302,
                 fit: BoxFit.cover,
               ),
-            ),
-            const SizedBox(width: 14),
-            TextField(
-              controller: _controller1,
-              decoration: InputDecoration(
-                  filled: true,
-                  fillColor: Colors.white,
-                  border: const OutlineInputBorder(),
-                  labelText: 'Digite seu email',
-                  labelStyle: TextStyle(color: Theme.of(context).hintColor)),
-              keyboardType: TextInputType.text,
-            ),
-            const SizedBox(width: 14),
-            TextField(
-              controller: _controller2,
-              decoration: InputDecoration(
-                  filled: true,
-                  fillColor: Colors.white,
-                  border: const OutlineInputBorder(),
-                  labelText: 'Digite sua senha',
-                  labelStyle: TextStyle(color: Theme.of(context).hintColor)),
-              keyboardType: TextInputType.visiblePassword,
             ),
             const SizedBox(height: 20),
             // Button

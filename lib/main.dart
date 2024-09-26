@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(),
       initialRoute: '/',
       routes: {
-        '/': (_) => LoginScreenPage(),
+        '/': (_) => const LoginScreenPage(),
         '/list-screen': (_) => const ListScreenPage(),
         '/add-task-screen': (_) => AddTaskPage(),
       },

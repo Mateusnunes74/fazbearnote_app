@@ -8,8 +8,9 @@ class ListScreenPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.onPrimaryContainer,
       appBar: AppBar(
-        title: const Text('Tarefas'),
+        title: const Text('Tarefas', style: TextStyle(color: Color(0xff000000) )),
         centerTitle: true,
         backgroundColor: const Color(0xffecc06c),
       ),
