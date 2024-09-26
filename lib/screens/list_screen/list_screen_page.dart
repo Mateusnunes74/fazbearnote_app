@@ -18,7 +18,7 @@ class ListScreenPage extends StatelessWidget {
       
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.pushReplacementNamed(context, '/add-task-screen');
+          Navigator.pushNamed(context, '/add-task-screen');
         },
         child: const Icon(Icons.add),
       ),
@@ -27,7 +27,9 @@ class ListScreenPage extends StatelessWidget {
           return ListView.builder(
             itemCount: task.tasks.length,
             itemBuilder: (BuildContext context, index) {
-              return ListTile(
+              return Card(
+                // shape: ,
+                child: ListTile(
                 title: Text(task.tasks[index].title,
                 style: TextStyle(
                   decoration: task.tasks[index].isCompleted 
@@ -54,7 +56,8 @@ class ListScreenPage extends StatelessWidget {
                   ),
                 ],
               ),
-            );
+            ),
+           ); 
           },
         );
        },

@@ -7,6 +7,8 @@ class AddTaskPage extends StatelessWidget {
   AddTaskPage({super.key});
 
   final controller = TextEditingController();
+  final _nameController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -17,31 +19,42 @@ class AddTaskPage extends StatelessWidget {
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            TextField(
-              controller: controller,
-              autofocus: true,
-              decoration: const InputDecoration(
-                hintText: 'Title',
+        child: Form(
+          key: _formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              TextFormField(
+                controller: _nameController,
+                autofocus: true,
+                decoration: const InputDecoration(
+                  hintText: 'Title',
+                ),
+                validator: (value) {
+                  if (value!.length < 5) {
+                    return "A quantidade mínima para caracteres é 5.";
+                  }
+                    return null;
+                }
               ),
-            ),
-            const SizedBox(height: 15),
-            ElevatedButton(
-              onPressed: () {
-                context.read<SaveTask>().addTask(
-                  Task(
-                    title: controller.text,
-                    isCompleted: false,
-                  ),
-                );
-                controller.clear();
-                Navigator.of(context).pop();
-              }, 
-              child: const Text('Add'),
-            ),
-          ],
+              const SizedBox(height: 15),
+              ElevatedButton(
+                onPressed: () {
+                  if(_formKey.currentState!.validate()){
+                    context.read<SaveTask>().addTask(
+                    Task(
+                      title: controller.text,
+                      isCompleted: false,
+                    ),
+                  );
+                  controller.clear();
+                  Navigator.of(context).pop();
+                  }
+                }, 
+                child: const Text('Add'),
+              ),
+            ],
+          ),
         ),
       ),
     );
