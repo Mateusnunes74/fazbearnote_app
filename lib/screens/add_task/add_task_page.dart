@@ -1,3 +1,4 @@
+import 'package:fazbear_security_todo/database/database.dart';
 import 'package:fazbear_security_todo/models/save_task.dart';
 import 'package:fazbear_security_todo/models/task_model.dart';
 import 'package:flutter/material.dart';
@@ -5,6 +6,8 @@ import 'package:provider/provider.dart';
 
 class AddTaskPage extends StatelessWidget {
   AddTaskPage({super.key});
+
+  final db = DatabaseHelper.instance;
 
   final controller = TextEditingController();
   final _nameController = TextEditingController();
@@ -25,32 +28,37 @@ class AddTaskPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               TextFormField(
-                controller: _nameController,
-                autofocus: true,
-                decoration: const InputDecoration(
-                  hintText: 'Title',
-                ),
-                validator: (value) {
-                  if (value!.length < 5) {
-                    return "A quantidade mínima para caracteres é 5.";
-                  }
+                  controller: _nameController,
+                  autofocus: true,
+                  decoration: const InputDecoration(
+                    hintText: 'Title',
+                  ),
+                  validator: (value) {
+                    if (value!.length < 5) {
+                      return "A quantidade mínima para caracteres é 5.";
+                    }
                     return null;
-                }
-              ),
+                  }),
               const SizedBox(height: 15),
               ElevatedButton(
-                onPressed: () {
-                  if(_formKey.currentState!.validate()){
-                    context.read<SaveTask>().addTask(
-                    Task(
+                onPressed: () async {
+                  if (_formKey.currentState!.validate()) {
+                    final task = Task(
                       title: controller.text,
                       isCompleted: false,
-                    ),
-                  );
-                  controller.clear();
-                  Navigator.of(context).pop();
+                    );
+                    // salvar no banco
+                    final result = await db.insertTask(task);
+                    if (result > 0) {
+                      context.read<SaveTask>().addTask(task);
+                      controller.clear();
+                      Navigator.of(context).pop();
+                      // Snackbar mensagem de sucesso
+                    }else{
+                      // SnackBar mensagem de erro
+                    }
                   }
-                }, 
+                },
                 child: const Text('Add'),
               ),
             ],

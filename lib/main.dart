@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (_) => const LoginScreenPage(),
-        '/list-screen': (_) => ListScreenPage(),
+        '/list-screen': (_) => const ListScreenPage(),
         '/add-task-screen': (_) => AddTaskPage(),
       },
       title: 'Fazbear Note',
