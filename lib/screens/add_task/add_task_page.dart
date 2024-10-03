@@ -9,7 +9,6 @@ class AddTaskPage extends StatelessWidget {
 
   final db = DatabaseHelper.instance;
 
-  final controller = TextEditingController();
   final _nameController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
@@ -44,14 +43,14 @@ class AddTaskPage extends StatelessWidget {
                 onPressed: () async {
                   if (_formKey.currentState!.validate()) {
                     final task = Task(
-                      title: controller.text,
+                      title: _nameController.text,
                       isCompleted: false,
                     );
                     // salvar no banco
                     final result = await db.insertTask(task);
                     if (result > 0) {
                       context.read<SaveTask>().addTask(task);
-                      controller.clear();
+                      _nameController.clear();
                       Navigator.of(context).pop();
                       // Snackbar mensagem de sucesso
                     }else{

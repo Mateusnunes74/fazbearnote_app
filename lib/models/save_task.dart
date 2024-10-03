@@ -3,26 +3,27 @@ import 'package:flutter/material.dart';
 
 
 class SaveTask extends ChangeNotifier {
-  final List<Task> _tasks = [
-    Task(title: 'Aprender essa merda de Flutter', isCompleted: false),
-    Task(title: 'Beber água', isCompleted: false),
-    Task(title: 'Matar o criador do Flutter', isCompleted: false),
-  ];
+  final List<Task> _tasks = [];
 
   List<Task> get tasks => _tasks;
 
   void addTask(Task task){
-    tasks.add(task);
+    _tasks.add(task);
+    notifyListeners();
+  }
+
+  void loadTask(List<Task> tasks){
+    _tasks.addAll(tasks);
     notifyListeners();
   }
 
    void removeTask(Task task){
-    tasks.remove(task);
+    _tasks.remove(task);
     notifyListeners();
   }
   
   void checkTask(int index) {
-    tasks [index].isDone();
+    _tasks[index].isDone();
     notifyListeners();
   }
 }

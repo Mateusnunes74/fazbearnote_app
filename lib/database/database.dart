@@ -1,4 +1,5 @@
 import 'dart:core';
+import 'dart:developer';
 import 'dart:io';
 import 'package:fazbear_security_todo/models/task_model.dart';
 import 'package:sqflite/sqflite.dart';
@@ -46,9 +47,9 @@ class DatabaseHelper {
     final List<Task> taskList = [];
 
     for (var taskMap in noteMapList) {
+      
       taskList.add(Task.fromMap(taskMap));
     }
-
     return taskList;
   }
 
