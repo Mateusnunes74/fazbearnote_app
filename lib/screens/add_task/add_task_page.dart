@@ -30,7 +30,7 @@ class AddTaskPage extends StatelessWidget {
                   controller: _nameController,
                   autofocus: true,
                   decoration: const InputDecoration(
-                    hintText: 'Title',
+                    hintText: 'Título',
                   ),
                   validator: (value) {
                     if (value!.length < 5) {
@@ -51,14 +51,20 @@ class AddTaskPage extends StatelessWidget {
                     if (result > 0) {
                       context.read<SaveTask>().addTask(task);
                       _nameController.clear();
-                      Navigator.of(context).pop();
+                      Navigator.pushNamedAndRemoveUntil(context, '/list-screen', (Route<dynamic> route) => false);
                       // Snackbar mensagem de sucesso
+                      ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text('Tarefa adicionada com sucesso!'))
+                      );
                     }else{
                       // SnackBar mensagem de erro
+                      ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text('Erro ao adicionar tarefa.'))
+                      );
                     }
                   }
                 },
-                child: const Text('Add'),
+                child: const Text('Adicionar'),
               ),
             ],
           ),

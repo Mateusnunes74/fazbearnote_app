@@ -1,5 +1,4 @@
 import 'dart:core';
-import 'dart:developer';
 import 'dart:io';
 import 'package:fazbear_security_todo/models/task_model.dart';
 import 'package:sqflite/sqflite.dart';
@@ -71,8 +70,13 @@ class DatabaseHelper {
 
   Future<int> deleteTask(int id) async {
     Database? db = await this.db;
-    final int result =
-        await db!.delete(taskTable, where: '$colId = ?', whereArgs: [id]);
-    return result;
+    try {
+      final int result = await db!.delete(taskTable, where: '$colId = ?', whereArgs: [id]);
+      print('Número de registros deletados: $result');
+      return result;
+    } catch (e) {
+      print('Erro ao deletar: $e');
+      return 0;
+    }
   }
 }

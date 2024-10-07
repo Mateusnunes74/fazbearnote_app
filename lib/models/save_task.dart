@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 
 class SaveTask extends ChangeNotifier {
-  final List<Task> _tasks = [];
+  List<Task> _tasks = [];
 
   List<Task> get tasks => _tasks;
 
@@ -13,6 +13,7 @@ class SaveTask extends ChangeNotifier {
   }
 
   void loadTask(List<Task> tasks){
+    _tasks.clear();
     _tasks.addAll(tasks);
     notifyListeners();
   }

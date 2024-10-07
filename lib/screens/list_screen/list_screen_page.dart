@@ -1,9 +1,6 @@
-import 'dart:developer';
 
 import 'package:fazbear_security_todo/database/database.dart';
 import 'package:fazbear_security_todo/models/save_task.dart';
-import 'package:fazbear_security_todo/models/task_model.dart';
-import 'package:fazbear_security_todo/screens/list_screen/list_task.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -46,7 +43,7 @@ class ListScreenPage extends StatelessWidget {
 
     if (snapshot.data != null && snapshot.data!.isEmpty) {
       return const Center(
-        child: Text('Não existem tarefas cadastradas!!!'),
+        child: Text('Não existem tarefas cadastradas!!!', style: TextStyle(color: Colors.white)),
       );
     }
     return Consumer<SaveTask>(
@@ -75,17 +72,26 @@ class ListScreenPage extends StatelessWidget {
                         context.read<SaveTask>().checkTask(index);
                       },
                     ),
-                    IconButton(
-                      onPressed: () {
-                        context.read<SaveTask>().removeTask(task.tasks[index]);
-                        // remover do banco
-                        db.deleteTask(index);
-                      },
-                      icon: const Icon(
-                        Icons.delete,
-                      ),
-                    ),
-                  ],
+                IconButton(
+                  onPressed: () async {
+                    final result = await db.deleteTask(task.tasks[index].id!);
+                    if (result > 0) {
+                      context.read<SaveTask>().removeTask(task.tasks[index]);
+                      Navigator.pushNamedAndRemoveUntil(context, '/list-screen', (Route<dynamic> route) => false);
+                      // Exibir Snackbar de sucesso
+                      ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text('Tarefa deletada com sucesso!'))
+                      );
+                    } else {
+                      // Exibir Snackbar de erro
+                      ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text('Erro ao deletar a tarefa.'))
+                      );
+                    }
+                  },
+                  icon: const Icon(Icons.delete),
+                ),
+                ],
                 ),
               ),
             );
